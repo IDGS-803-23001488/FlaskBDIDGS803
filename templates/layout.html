@@ -55,23 +55,23 @@
         </div>
     </nav>
    
-    <div class="flex items-center justify-center min-h-scree">
+    <div class="flex justify-center min-h-screen p-2">
        
-            {%with messages=get_flashed_messages()%}
-            {%if messages%}
-                {%for message in messages%}
-                    <div class="alert alert-success">
-                        {{message}}
-                    </div>
-                {%endfor%}
-            {%endif%}
-        {%endwith%}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+   
+    {% block container %}
+    {% endblock %}
        
-        {% block container%}
-       
-        {% endblock %}
-       
-    </div>
+</div>
+
  
    
  
