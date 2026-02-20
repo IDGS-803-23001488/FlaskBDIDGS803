@@ -1,8 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for,flash, g
-from flask_wtf.csrf import CSRFProtect
-from config import DevelopmentConfig
-from models import db, Alumnos
-import forms
+from flask import Flask, render_template
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
