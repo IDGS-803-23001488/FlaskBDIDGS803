@@ -4,7 +4,7 @@ from wtforms import EmailField
 from wtforms import validators
 
 
-class UserForms(Form):
+class UserForm(Form):
     id = IntegerField('id')
     nombre = StringField('Nombre',
         [
