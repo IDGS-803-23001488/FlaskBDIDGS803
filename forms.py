@@ -12,12 +12,12 @@ class UserForm(Form):
             validators.length(min=4,max=10,message="Ingresa un valor valido")
         ]
     )
-    apaterno = StringField('A. Parterno',
+    apellidos = StringField('Apellidos',
         [
             validators.DataRequired("Este campo es requerido")
         ]
     )
-    amaterno = StringField('A. Materno',
+    telefono = StringField('Telefono',
         [
             validators.DataRequired("Este campo es requerido")
         ]
