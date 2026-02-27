@@ -1,4 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
+from flask_wtf.csrf import CSRFProtect
+from models import db, Alumnos
+from config import DevelopmentConfig
+import forms
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
@@ -49,6 +53,53 @@ def detalles():
 		correo= correo,
 	)
 
+@app.route("/modificar",methods=['POST','GET'])
+def modificar():
+	create_form = forms.UserForm(request.form)
+	id = request.args.get('id')
+	if request.method == 'GET':
+		alumn = db.session.query(Alumnos).filter(Alumnos.id == id).first()
+		create_form.id.data = alumn.id
+		create_form.nombre.data = alumn.nombre
+		create_form.apaterno.data = alumn.aPaterno
+		create_form.amaterno.data = alumn.aMaterno
+		create_form.email.data = alumn.email
+	
+	if request.method == 'POST':
+		alumn = db.session.query(Alumnos).filter(Alumnos.id == id).first()
+		alumn.nombre = create_form.nombre.data
+		alumn.aPaterno = create_form.apaterno.data
+		alumn.aMaterno = create_form.amaterno.data
+		alumn.email = create_form.email.data
+		db.session.add(alumn)
+		db.session.commit()
+		return redirect(url_for('index'))
+	
+	return render_template(
+		"modificar.html",form = create_form
+	)
+
+@app.route("/eliminar",methods=['POST','GET'])
+def eliminar():
+	create_form = forms.UserForm(request.form)
+	id = request.args.get('id')
+	if request.method == 'GET':
+		alumn = db.session.query(Alumnos).filter(Alumnos.id == id).first()
+		create_form.id.data = alumn.id
+		create_form.nombre.data = alumn.nombre
+		create_form.apaterno.data = alumn.aPaterno
+		create_form.amaterno.data = alumn.aMaterno
+		create_form.email.data = alumn.email
+	
+	if request.method == 'POST':
+		alumn = db.session.query(Alumnos).filter(Alumnos.id == id).first()
+		db.session.delete(alumn)
+		db.session.commit()
+		return redirect(url_for('index'))
+	
+	return render_template(
+		"eliminar.html",form = create_form
+	)
 if __name__ == '__main__':
 	csrf.init_app(app)
 	db.init_app(app)
