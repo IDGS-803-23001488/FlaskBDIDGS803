@@ -3,15 +3,15 @@
 {% import "_macros.html" as macros %}
 
 <div class="w-full max-w-5xl space-y-6">
-
   <form action="" method="POST" novalidate class="max-w-sm mx-auto">
 
     {{ form.csrf_token }}
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
 
+    {{ macros.camposNuevos(form.id,false) }}
     {{ macros.camposNuevos(form.nombre) }}
     {{ macros.camposNuevos(form.apellidos) }}
-    {{ macros.camposNuevos(form.especialidad) }}
+    {{ macros.camposNuevos(form.telefono) }}
     {{ macros.camposNuevos(form.email) }}
 
     <button
@@ -21,10 +21,9 @@
       Guardar
     </button>
 
-    {{ macros.botonRegresar(url_for('maestros.lista')) }}
+    {{ macros.botonRegresar(url_for('alumnos.index')) }}
 
   </form>
-
 </div>
 
 {% endblock %}

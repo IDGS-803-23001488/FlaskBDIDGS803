@@ -9,20 +9,20 @@
     {{ form.csrf_token }}
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
 
-    {{ macros.camposNuevos(form.matricula,false) }}
+    {{ macros.camposNuevos(form.id,false) }}
     {{ macros.camposNuevos(form.nombre,false) }}
     {{ macros.camposNuevos(form.apellidos,false) }}
-    {{ macros.camposNuevos(form.especialidad,false) }}
+    {{ macros.camposNuevos(form.telefono,false) }}
     {{ macros.camposNuevos(form.email,false) }}
 
     <button
       type="submit"
-      class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+      class="text-white bg-red-600 border border-transparent hover:bg-red-700 focus:ring-4 focus:ring-red-300 shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
     >
       Eliminar
     </button>
 
-    {{ macros.botonRegresar(url_for('maestros.lista')) }}
+    {{ macros.botonRegresar(url_for('alumnos.index')) }}
 
   </form>
 

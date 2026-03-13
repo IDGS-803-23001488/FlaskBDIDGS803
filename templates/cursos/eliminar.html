@@ -3,28 +3,26 @@
 {% import "_macros.html" as macros %}
 
 <div class="w-full max-w-5xl space-y-6">
-
   <form action="" method="POST" novalidate class="max-w-sm mx-auto">
 
     {{ form.csrf_token }}
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
 
-    {{ macros.camposNuevos(form.nombre) }}
-    {{ macros.camposNuevos(form.apellidos) }}
-    {{ macros.camposNuevos(form.especialidad) }}
-    {{ macros.camposNuevos(form.email) }}
+    {{ macros.camposNuevos(form.id,false) }}
+    {{ macros.camposNuevos(form.nombre,false) }}
+    {{ macros.camposNuevos(form.descripcion,false) }}
+    {{ macros.camposNuevos(form.maestro_id,false) }}
 
     <button
       type="submit"
       class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
     >
-      Guardar
+      Eliminar
     </button>
 
-    {{ macros.botonRegresar(url_for('maestros.lista')) }}
+    {{ macros.botonRegresar(url_for('cursos.lista')) }}
 
   </form>
-
 </div>
 
 {% endblock %}

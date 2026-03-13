@@ -11,7 +11,7 @@
 
     {{ macros.camposNuevos(form.nombre) }}
     {{ macros.camposNuevos(form.apellidos) }}
-    {{ macros.camposNuevos(form.especialidad) }}
+    {{ macros.camposNuevos(form.telefono) }}
     {{ macros.camposNuevos(form.email) }}
 
     <button
@@ -21,7 +21,7 @@
       Guardar
     </button>
 
-    {{ macros.botonRegresar(url_for('maestros.lista')) }}
+    {{ macros.botonRegresar(url_for('alumnos.index')) }}
 
   </form>
 

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block container %}
+
+<div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold mb-8">
+        Cursos Disponibles
+    </h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for curso in cursos %}
+        <a href="{{ url_for('cursos.revisar', id=curso.id) }}">
+            <div class="bg-white border rounded-xl shadow-md p-6 hover:shadow-xl transition">
+                <h2 class="text-xl font-bold mb-2">
+                    {{ curso.nombre }}
+                </h2>
+                <p class="text-gray-600 mb-4">
+                    {{ curso.descripcion }}
+                </p>
+                <p class="text-sm text-gray-500">
+                    Maestro: {{ curso.maestro.nombre }} {{ curso.maestro.apellidos }}
+                </p>
+                <div class="mt-4 text-blue-600 font-semibold">
+                    Ver detalles ->
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

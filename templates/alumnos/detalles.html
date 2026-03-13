@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block container %}
+
+{% import "_macros.html" as macros %}
+<div class="w-full max-w-6xl mx-auto space-y-6">
+    <div class="bg-neutral-primary-soft p-6 border border-default rounded-base shadow-xs">
+        <h5 class="mb-4 text-2xl font-bold tracking-tight text-heading">
+            Información del Alumno
+        </h5>
+        <div class="space-y-2 text-body">
+            <p>
+                <span class="font-semibold text-heading">Nombre:</span>
+                {{ alumn.nombre }} {{ alumn.apellidos }}
+            </p>
+            <p>
+                <span class="font-semibold text-heading">Correo:</span>
+                {{ alumn.email }}
+            </p>
+            <p>
+                <span class="font-semibold text-heading">Teléfono:</span>
+                {{ alumn.telefono }}
+            </p>
+        </div>
+    </div>
+
+    <div class="bg-neutral-primary-soft p-6 border border-default rounded-base shadow-xs">
+        <h5 class="mb-4 text-xl font-semibold text-heading">
+            Cursos
+        </h5>
+        {% if alumn.cursos %}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {% for curso in alumn.cursos %}
+            <div class="bg-neutral-secondary-soft p-4 border border-default rounded-base">
+                <h6 class="font-semibold text-heading">
+                    {{ curso.nombre }}
+                </h6>
+                <p class="text-sm text-body mt-1">
+                    {{ curso.descripcion }}
+                </p>
+                <p class="text-sm text-body mt-2">
+                    <span class="font-medium">Maestro:</span>
+                    {{ curso.maestro.nombre }} {{ curso.maestro.apellidos }}
+                </p>
+            </div>
+            {% endfor %}
+
+        </div>
+        {% else %}
+
+        <p class="text-body">
+            SIN CURSOS
+        </p>
+        {% endif %}
+    </div>
+    <div>
+        {{ macros.botonRegresar(url_for('alumnos.index')) }}
+    </div>
+</div>
+
+{% endblock %}

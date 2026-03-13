@@ -118,8 +118,6 @@ def eliminar():
         form=create_form
     )
 
-
-
 @maestros.route('/perfil/<nombre>')
 def perfil(nombre):
     return f"Perfil de {nombre}"
